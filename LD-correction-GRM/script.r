@@ -24,7 +24,7 @@ write.table(bimfile[,2],"position",row.names=F,col.names=F,quote=F)
 
 mv position position_10k
 
-#creates a PLINK 1 binary fileset with the selected 10 K SNPs  
+#creates a PLINK binary fileset with the selected 10 K SNPs  
 plink --bfile /WORK/scau_ljq_1/rendy/grm/ld/smat/ld_matr/ld_pruned/pruneddata --chr-set 29 no-x no-y no-xy no-mt  --extract position_10k --make-bed --out 10k
 
 #Calculate the LD (r squared) between two SNPs on each chromosome
@@ -35,7 +35,7 @@ mv plink.ld plink.ld_chr"${i}"
 done
 
 
-#Construction of LD-correction matrix and its inverse matrix
+#Construction of LD matrix and its inverse matrix
 library("data.table")
 chr1<-as.data.frame(fread("plink.ld_chr1"))
 chr2<-as.data.frame(fread("plink.ld_chr2"))
